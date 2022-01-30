@@ -4,7 +4,7 @@ import { colors } from "../../constants/colors";
 import { fontSizes } from "../../constants/fontSizes";
 import { sizes } from "../../constants/sizes";
 
-const InputContainer = styled.div`
+const InputContainer = styled.div<{ error: boolean }>`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -16,7 +16,8 @@ const InputContainer = styled.div`
 
   input {
     border-radius: ${sizes.smallRadius};
-    border: 1px solid ${colors.mediumGrey};
+    border: 1px solid
+      ${(props) => (props.error ? colors.error : colors.mediumGrey)};
     padding: ${sizes.smallPadding};
     font-size: ${fontSizes.small};
     margin-bottom: ${sizes.smallMargin};
@@ -37,10 +38,11 @@ const InputBottomContainer = styled.div`
 export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   tipMessage?: string;
+  error?: boolean;
 }
 
 export const Input = forwardRef<HTMLInputElement, IInput>((props, ref) => (
-  <InputContainer>
+  <InputContainer error={props.error ?? false}>
     {props.label && <InputLabel>{props.label}</InputLabel>}
     <input ref={ref} {...props} />
     <InputBottomContainer>

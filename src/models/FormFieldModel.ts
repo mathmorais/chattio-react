@@ -5,8 +5,8 @@ export class FormFieldModel {
   private inputRef = createRef<HTMLInputElement>();
   inputProps: IInput;
 
-  constructor(inputProps?: IInput) {
-    this.inputProps = inputProps ?? { label: "" };
+  constructor(inputProps: IInput) {
+    this.inputProps = inputProps;
   }
 
   get ref(): React.RefObject<HTMLInputElement> {

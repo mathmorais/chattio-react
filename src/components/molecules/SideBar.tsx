@@ -21,7 +21,7 @@ const SideBarContainer = styled.div`
 export const SideBar: React.FC = () => {
   return (
     <SideBarContainer>
-      <SideBarItem url="/chat/rooms/">
+      <SideBarItem url="/chat/room">
         <InboxIcon />
       </SideBarItem>
       <SideBarItem url="/chat/friends/all">
